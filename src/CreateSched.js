@@ -1,8 +1,9 @@
 import React from 'react';
-import Shift from './Shift';
+
+import DisplaySched from './DisplaySched.js';
 
 //code search
-function search(code, techlist){
+function firstSearch(code, techlist){
     for (const tech of techlist)  {
         if (tech.QUAL.find(element => element === code) && tech.CURRENT === "") {
             tech.CURRENT = code;
@@ -12,7 +13,7 @@ function search(code, techlist){
 }
 
 //code search
-function secondsearch(code, techlist){
+function secondSearch(code, techlist){
     for (const tech of techlist)  {
         if (tech.QUAL.find(element => element === code) && tech.CURRENT === "" && tech.PREV !== code ) {
             if (tech.PREV === "4O" && code === "5O") {
@@ -30,7 +31,7 @@ function secondsearch(code, techlist){
 }
 
 //FIRST PERIOD
-function firstperiod(tasks, techs){
+function firstPeriod(tasks, techs){
     for (const element of tasks)  { //task loop
         switch (element.CODE) {
             case "AD": //set admin
@@ -46,7 +47,7 @@ function firstperiod(tasks, techs){
                 element.FIRST = "MLS";
                 break;
             default: //set everything else
-                let result = search(element.CODE, techs); //searching available techs
+                let result = firstSearch(element.CODE, techs); //searching available techs
                 if (result !== undefined){ //if task is not assigned a tech yet
                     element.FIRST = result.NAME; //set assigned tech
                 }
@@ -61,7 +62,7 @@ function firstperiod(tasks, techs){
 }
 
 //SECOND PERIOD
-function secondperiod(tasks, techs){
+function secondPeriod(tasks, techs){
     for (const element of tasks)  { //task loop
         switch (element.CODE) {
             case "AD": //set admin
@@ -77,7 +78,7 @@ function secondperiod(tasks, techs){
                 element.SECOND = element.FIRST;
                 break;
             default: //set everything else
-                let result = secondsearch(element.CODE, techs); //searching available techs
+                let result = secondSearch(element.CODE, techs); //searching available techs
                 if (result !== undefined){ //if task is not assigned a tech yet
                     element.SECOND = result.NAME; //set assigned tech
                 }
@@ -91,20 +92,20 @@ function secondperiod(tasks, techs){
     }
 }
 
-function createSched(tasks, techs){
-    firstperiod(tasks, techs);
-    secondperiod(tasks, techs);
+function create(tasks, techs){
+    firstPeriod(tasks, techs);
+    secondPeriod(tasks, techs);
 }
 
-const Sched = ({ tasks , techs, setTasks }) => {
+const CreateSched = ({ tasks , techs, setTasks }) => {
 
-    createSched(tasks, techs);
+    create(tasks, techs);
 
     return(
-        <div>
-            <Shift tasklist={tasks}/>
+        <div style={{ flexGrow: 1 }}>
+            <DisplaySched tasklist={tasks} />
         </div>
     )
 }
 
-export default Sched;
+export default CreateSched;
