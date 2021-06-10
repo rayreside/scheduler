@@ -15,7 +15,8 @@ var techpun = [
             "2C",
             "4O",
             "4C",
-            "1P"
+            "1P",
+            "AD"
         ],
         "PREV": "",
         "CURRENT": ""

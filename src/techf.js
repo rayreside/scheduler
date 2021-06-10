@@ -65,7 +65,8 @@ var techfun = [
             "1P",
             "1S",
             "5O",
-            "5C"
+            "5C",
+            "2L"
         ],
         "PREV": "",
         "CURRENT": ""
@@ -80,7 +81,10 @@ var techfun = [
             "1P",
             "1S",
             "5O",
-            "5C"
+            "5C",
+            "1L",
+            "2L",
+            "5L"
         ],
         "PREV": "",
         "CURRENT": ""
@@ -125,7 +129,9 @@ var techfun = [
             "1P",
             "1S",
             "5O",
-            "5C"
+            "5C",
+            "1L",
+            "5L"
         ],
         "PREV": "",
         "CURRENT": ""

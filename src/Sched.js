@@ -11,14 +11,47 @@ function search(code, techlist){
     }
 }
 
-//DAY 1 FIRST PERIOD
-function firstshift(tasks, techs){
-    for (const element of tasks)  { //task loop
-        let result = search(element.CODE, techs); //searching available techs
-        if (result !== undefined){ //if task is not assigned a tech yet
-            element.ASSIGNED = result.NAME; //set assigned tech
+//code search
+function secondsearch(code, techlist){
+    for (const tech of techlist)  {
+        if (tech.QUAL.find(element => element === code) && tech.CURRENT === "" && tech.PREV !== code ) {
+            if (tech.PREV === "4O" && code === "5O") {
+                //skip
+            }
+            else if (tech.PREV === "5O" && code === "4O") {
+                //skip
+            }
+            else {
+                tech.CURRENT = code;
+                return tech;
+            }
         }
-        else { break; } //else move to next task
+    }
+}
+
+//FIRST PERIOD
+function firstperiod(tasks, techs){
+    for (const element of tasks)  { //task loop
+        switch (element.CODE) {
+            case "AD": //set admin
+                element.FIRST = "NC";
+                break;
+            case "2L": //set assessment lead
+                element.FIRST = "TT";
+                break;
+            case "1L": //set psp lead
+                element.FIRST = "SB";
+                break;
+            case "5L": //set cutting lead
+                element.FIRST = "MLS";
+                break;
+            default: //set everything else
+                let result = search(element.CODE, techs); //searching available techs
+                if (result !== undefined){ //if task is not assigned a tech yet
+                    element.FIRST = result.NAME; //set assigned tech
+                }
+                else { break; } //else move to next task
+        }
     }
 
     for (const element of techs) { //tech loop
@@ -27,18 +60,42 @@ function firstshift(tasks, techs){
     }
 }
 
-/*const swap = (arr, a, b) => 
-    arr.map( (curr,i) => i === a ? arr[b] : curr )
-       .map( (curr,i) => i === b ? arr[a] : curr )*/
+//SECOND PERIOD
+function secondperiod(tasks, techs){
+    for (const element of tasks)  { //task loop
+        switch (element.CODE) {
+            case "AD": //set admin
+                element.SECOND = element.FIRST;
+                break;
+            case "2L": //set assessment lead
+                element.SECOND = element.FIRST;
+                break;
+            case "1L": //set psp lead
+                element.SECOND = element.FIRST;
+                break;
+            case "5L": //set cutting lead
+                element.SECOND = element.FIRST;
+                break;
+            default: //set everything else
+                let result = secondsearch(element.CODE, techs); //searching available techs
+                if (result !== undefined){ //if task is not assigned a tech yet
+                    element.SECOND = result.NAME; //set assigned tech
+                }
+                else { break; } //else move to next task
+        }
+    }
+    
+    for (const element of techs) { //tech loop
+        element.PREV = element.CURRENT; //set previous task for next period
+        element.CURRENT = ""; //clear current task
+    }
+}
 
 const Sched = ({ tasks , techs, setTasks }) => {
 
-    firstshift(tasks, techs);
-
-    //let arr1 = tasks.slice(-3);
-    //let arr2 = tasks.slice(0, 15);
-    //tasks = arr1.concat(arr2);
-    //console.log(tasks);
+    firstperiod(tasks, techs);
+    secondperiod(tasks, techs);
+    console.log(tasks);
 
     return(
         <div>
