@@ -1,4 +1,5 @@
 import React from 'react';
+import arrayMove from 'array-move';
 
 import DisplaySched from './DisplaySched.js';
 
@@ -26,6 +27,16 @@ function secondSearch(code, techlist){
                 tech.CURRENT = code;
                 return tech;
             }
+        }
+    }
+}
+
+//code search
+function pluckSearch(code, techlist){
+    for (const tech of techlist)  {
+        if (tech.CURRENT === "" && tech.PREV !== code ) {
+            tech.CURRENT = code;
+            return tech;
         }
     }
 }
@@ -59,10 +70,15 @@ function firstPeriod(tasks, techs){
         element.PREV = element.CURRENT; //set previous task for next period
         element.CURRENT = ""; //clear current task
     }
+
+    console.log(tasks);
 }
 
 //SECOND PERIOD
 function secondPeriod(tasks, techs){
+
+    console.log(tasks);
+
     for (const element of tasks)  { //task loop
         switch (element.CODE) {
             case "AD": //set admin
@@ -77,10 +93,17 @@ function secondPeriod(tasks, techs){
             case "5L": //set cutting lead
                 element.SECOND = element.FIRST;
                 break;
+            case "1P":
+                let result1 = pluckSearch(element.CODE, techs);
+                if (result1 !== undefined){ //if task is not assigned a tech yet
+                    element.SECOND = result1.NAME; //set assigned tech
+                }
+                else { break; } //else move to next task
+                break;
             default: //set everything else
-                let result = secondSearch(element.CODE, techs); //searching available techs
-                if (result !== undefined){ //if task is not assigned a tech yet
-                    element.SECOND = result.NAME; //set assigned tech
+                let result2 = secondSearch(element.CODE, techs); //searching available techs
+                if (result2 !== undefined){ //if task is not assigned a tech yet
+                    element.SECOND = result2.NAME; //set assigned tech
                 }
                 else { break; } //else move to next task
         }
@@ -94,7 +117,16 @@ function secondPeriod(tasks, techs){
 
 function create(tasks, techs){
     firstPeriod(tasks, techs);
-    secondPeriod(tasks, techs);
+
+    let tasks1 = arrayMove(tasks,7,-1);
+    let tasks2 = arrayMove(tasks1,8,-1);
+    tasks1 = arrayMove(tasks2,7,-1);
+    tasks2 = arrayMove(tasks1,-2,12);
+    tasks1 = arrayMove(tasks2,-5,13);
+    tasks2 = arrayMove(tasks1,19,-1);
+    //tasks1 = arrayMove(tasks2,-2,0);
+    
+    secondPeriod(tasks2, techs);
 }
 
 const CreateSched = ({ tasks , techs, theme }) => {

@@ -49,6 +49,20 @@ export const tasklist = [
         "SECOND": ""
     },
     {
+        "id": "04",
+        "TASK": "Scalpel Operator A",
+        "CODE": "2O",
+        "FIRST": "",
+        "SECOND": ""
+    },
+    {
+        "id": "03",
+        "TASK": "Scalpel Circulator",
+        "CODE": "2C",
+        "FIRST": "",
+        "SECOND": ""
+    },
+    {
         "id": "19",
         "TASK": "Cutting Circulator A",
         "CODE": "5C",
@@ -126,23 +140,9 @@ export const tasklist = [
         "SECOND": ""
     },
     {
-        "id": "16",
-        "TASK": "Plucking Operator C",
-        "CODE": "1P",
-        "FIRST": "",
-        "SECOND": ""
-    },
-    {
-        "id": "04",
-        "TASK": "Scalpel Operator A",
+        "id": "05",
+        "TASK": "Scalpel Operator B",
         "CODE": "2O",
-        "FIRST": "",
-        "SECOND": ""
-    },
-    {
-        "id": "03",
-        "TASK": "Scalpel Circulator",
-        "CODE": "2C",
         "FIRST": "",
         "SECOND": ""
     },
@@ -154,9 +154,9 @@ export const tasklist = [
         "SECOND": ""
     },
     {
-        "id": "05",
-        "TASK": "Scalpel Operator B",
-        "CODE": "2O",
+        "id": "16",
+        "TASK": "Plucking Operator C",
+        "CODE": "1P",
         "FIRST": "",
         "SECOND": ""
     },
