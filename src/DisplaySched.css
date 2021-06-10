@@ -7,5 +7,9 @@
 }
 
 .MuiDataGrid-row.Mui-odd {
-  background-color: #212121;
+  background-color: #252525;
+}
+
+.MuiDataGrid-cell {
+  text-transform: lowercase;
 }

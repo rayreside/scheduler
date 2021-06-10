@@ -37,9 +37,9 @@ const theme = createMuiTheme({
 // define which columns you have in your data
 const columns = [
   { field: 'id', headerName: 'Order', sortable: false, hide: true },
-  { field: 'TASK', headerName: 'Task', flex: 5, sortable: false },
-  { field: 'FIRST', headerName: 'First', flex: 2, sortable: false, editable: true },
-  { field: 'SECOND', headerName: 'Second', flex: 2, sortable: false, editable: true }
+  { field: 'TASK', headerName: 'TASK', flex: 5, sortable: false },
+  { field: 'FIRST', headerName: '4-12', flex: 2, sortable: false, editable: true },
+  { field: 'SECOND', headerName: '12-4', flex: 2, sortable: false, editable: true }
 ];
 
 //data grid toolbar
