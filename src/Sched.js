@@ -91,15 +91,14 @@ function secondperiod(tasks, techs){
     }
 }
 
-function createsched(tasks, techs){
+function createSched(tasks, techs){
     firstperiod(tasks, techs);
     secondperiod(tasks, techs);
 }
 
 const Sched = ({ tasks , techs, setTasks }) => {
 
-    //firstperiod(tasks, techs);
-    //secondperiod(tasks, techs);
+    createSched(tasks, techs);
 
     return(
         <div>
