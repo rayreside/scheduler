@@ -97,13 +97,13 @@ function create(tasks, techs){
     secondPeriod(tasks, techs);
 }
 
-const CreateSched = ({ tasks , techs, setTasks }) => {
+const CreateSched = ({ tasks , techs, theme }) => {
 
     create(tasks, techs);
 
     return(
         <div style={{ flexGrow: 1 }}>
-            <DisplaySched tasklist={tasks} />
+            <DisplaySched tasklist={tasks} theme={theme} />
         </div>
     )
 }

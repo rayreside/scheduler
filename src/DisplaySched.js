@@ -27,16 +27,19 @@ const theme = createMuiTheme({
       '"Segoe UI Symbol"',
     ],
     fontWeight: 600,
-    fontSize: 20
+    fontSize: 15
+  },
+  palette: {
+    type: 'dark',
   },
 });
 
 // define which columns you have in your data
 const columns = [
-  { field: 'id', headerName: 'Order', width: 130, sortable: false },
-  { field: 'TASK', headerName: 'Task', width: 300, sortable: false },
-  { field: 'FIRST', headerName: 'First', width: 130, sortable: false, editable: true },
-  { field: 'SECOND', headerName: 'Second', width: 130, sortable: false, editable: true }
+  { field: 'id', headerName: 'Order', flex: 1, sortable: false },
+  { field: 'TASK', headerName: 'Task', flex: 5, sortable: false },
+  { field: 'FIRST', headerName: 'First', flex: 2, sortable: false, editable: true },
+  { field: 'SECOND', headerName: 'Second', flex: 2, sortable: false, editable: true }
 ];
 
 //data grid toolbar
@@ -55,13 +58,15 @@ const DisplaySched = ({ tasklist }) => {
     return(
       <ThemeProvider theme={theme}>
         <div style={{ display: 'flex', height: '100%' }}>
-          <div style={{ flexGrow: 1 }}>
+          <div style={{ flexGrow: 1 }}></div>
+          <div style={{ flexGrow: 3 }}>
             <DataGrid disableColumnMenu={true}
             disableSelectionOnClick={true}
             autoHeight
             rows={tasklist}
             columns={columns}
             hideFooter={true}
+            rowHeight={38}
             sortModel={[
                 {
                   field: 'id',
@@ -72,6 +77,7 @@ const DisplaySched = ({ tasklist }) => {
               Toolbar: CustomToolbar,
             }} />
           </div>
+          <div style={{ flexGrow: 1 }}></div>
         </div>
       </ThemeProvider>
     )
