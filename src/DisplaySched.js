@@ -9,6 +9,7 @@ import {
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import './DisplaySched.css';
+import { Box } from '@material-ui/core';
 
 //set font
 const theme = createMuiTheme({
@@ -29,15 +30,12 @@ const theme = createMuiTheme({
     fontWeight: 600,
     fontSize: 15
   },
-  palette: {
-    type: 'dark',
-  },
 });
 
 // define which columns you have in your data
 const columns = [
   { field: 'id', headerName: 'Order', sortable: false, hide: true },
-  { field: 'TASK', headerName: 'TASK', flex: 5, sortable: false },
+  { field: 'TASK', headerName: 'task', flex: 5, sortable: false },
   { field: 'FIRST', headerName: '4-12', flex: 2, sortable: false, editable: true },
   { field: 'SECOND', headerName: '12-4', flex: 2, sortable: false, editable: true }
 ];
@@ -56,7 +54,7 @@ function CustomToolbar() {
 const DisplaySched = ({ tasklist }) => {
   return(
     <ThemeProvider theme={theme}>
-      <div style={{ display: 'flex', height: '100%' }}>
+      <Box py={4} style={{ display: 'flex' }}>
         <div style={{ flexGrow: 1 }}></div>
         <div style={{ flexGrow: 3 }}>
           <DataGrid disableColumnMenu={true}
@@ -77,7 +75,7 @@ const DisplaySched = ({ tasklist }) => {
           }} />
         </div>
         <div style={{ flexGrow: 1 }}></div>
-      </div>
+      </Box>
     </ThemeProvider>
   )
 }

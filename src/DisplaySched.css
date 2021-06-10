@@ -1,11 +1,21 @@
-.MuiButton-label-17 {
-  color: #78DCE8;
+.MuiDataGrid-root {
+  color: #332F2C;
+  background-color: #FCF9F4;
+}
+
+.MuiButton-label {
+  color: #7A6C52;
+  text-transform: lowercase;
 }
 
 .MuiDataGrid-columnHeaderTitle {
-  color: #FFD866;
+  color: #7A6C52;
+}
+
+.MuiDataGrid-row.Mui-even {
+  background-color: #F6F4E8;
 }
 
 .MuiDataGrid-row.Mui-odd {
-  background-color: #252525;
+  background-color: #D9E0CE;
 }
