@@ -36,7 +36,7 @@ const theme = createMuiTheme({
 
 // define which columns you have in your data
 const columns = [
-  { field: 'id', headerName: 'Order', flex: 1, sortable: false },
+  { field: 'id', headerName: 'Order', sortable: false, hide: true },
   { field: 'TASK', headerName: 'Task', flex: 5, sortable: false },
   { field: 'FIRST', headerName: 'First', flex: 2, sortable: false, editable: true },
   { field: 'SECOND', headerName: 'Second', flex: 2, sortable: false, editable: true }
@@ -54,33 +54,32 @@ function CustomToolbar() {
 }
 
 const DisplaySched = ({ tasklist }) => {
-
-    return(
-      <ThemeProvider theme={theme}>
-        <div style={{ display: 'flex', height: '100%' }}>
-          <div style={{ flexGrow: 1 }}></div>
-          <div style={{ flexGrow: 3 }}>
-            <DataGrid disableColumnMenu={true}
-            disableSelectionOnClick={true}
-            autoHeight
-            rows={tasklist}
-            columns={columns}
-            hideFooter={true}
-            rowHeight={38}
-            sortModel={[
-                {
-                  field: 'id',
-                  sort: 'asc',
-                },
-              ]}
-            components={{
-              Toolbar: CustomToolbar,
-            }} />
-          </div>
-          <div style={{ flexGrow: 1 }}></div>
+  return(
+    <ThemeProvider theme={theme}>
+      <div style={{ display: 'flex', height: '100%' }}>
+        <div style={{ flexGrow: 1 }}></div>
+        <div style={{ flexGrow: 3 }}>
+          <DataGrid disableColumnMenu={true}
+          disableSelectionOnClick={true}
+          autoHeight
+          rows={tasklist}
+          columns={columns}
+          hideFooter={true}
+          rowHeight={38}
+          sortModel={[
+              {
+                field: 'id',
+                sort: 'asc',
+              },
+            ]}
+          components={{
+            Toolbar: CustomToolbar,
+          }} />
         </div>
-      </ThemeProvider>
-    )
+        <div style={{ flexGrow: 1 }}></div>
+      </div>
+    </ThemeProvider>
+  )
 }
 
 export default DisplaySched;
