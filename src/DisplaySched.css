@@ -9,7 +9,3 @@
 .MuiDataGrid-row.Mui-odd {
   background-color: #252525;
 }
-
-.MuiDataGrid-cell {
-  text-transform: lowercase;
-}
