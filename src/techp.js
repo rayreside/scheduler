@@ -9,33 +9,7 @@ function shuffle(a) {
 
 var techpun = [
     {
-        "NAME": "Tech1",
-        "QUAL": [
-            "2O",
-            "2C",
-            "4O",
-            "4C",
-            "1P",
-            "1S"
-        ],
-        "PREV": "",
-        "CURRENT": ""
-    },
-    {
-        "NAME": "Tech2",
-        "QUAL": [
-            "2O",
-            "2C",
-            "4O",
-            "4C",
-            "1P",
-            "1S"
-        ],
-        "PREV": "",
-        "CURRENT": ""
-    },
-    {
-        "NAME": "Tech3",
+        "NAME": "AML",
         "QUAL": [
             "2O",
             "2C",
@@ -47,29 +21,53 @@ var techpun = [
         "CURRENT": ""
     },
     {
-        "NAME": "Tech4",
+        "NAME": "CRB",
         "QUAL": [
-            "1P",
-            "1S",
             "5O",
-            "5C"
+            "1P",
+            "1S"
         ],
         "PREV": "",
         "CURRENT": ""
     },
     {
-        "NAME": "Tech5",
+        "NAME": "GS",
         "QUAL": [
-            "1P",
-            "1S",
             "5O",
-            "5C"
+            "5C",
+            "1P",
+            "1S"
         ],
         "PREV": "",
         "CURRENT": ""
     },
     {
-        "NAME": "Tech6",
+        "NAME": "JSM",
+        "QUAL": [
+            "2O",
+            "2C",
+            "4O",
+            "4C"
+        ],
+        "PREV": "",
+        "CURRENT": ""
+    },
+    {
+        "NAME": "JBL",
+        "QUAL": [
+            "2O",
+            "2C",
+            "4O",
+            "4C",
+            "1P",
+            //"1S",
+            "5O"
+        ],
+        "PREV": "",
+        "CURRENT": ""
+    },
+    {
+        "NAME": "JMA",
         "QUAL": [
             "2O",
             "2C",
@@ -81,13 +79,33 @@ var techpun = [
         "CURRENT": ""
     },
     {
-        "NAME": "Tech7",
+        "NAME": "MPP",
+        "QUAL": [
+            "5O",
+            "5C",
+            "1P",
+            "1S"
+        ],
+        "PREV": "",
+        "CURRENT": ""
+    },
+    {
+        "NAME": "RPR",
         "QUAL": [
             "2O",
             "2C",
             "4O",
             "4C",
             "5O"
+        ],
+        "PREV": "",
+        "CURRENT": ""
+    },
+    {
+        "NAME": "SSM",
+        "QUAL": [
+            "1P",
+            "1S",
         ],
         "PREV": "",
         "CURRENT": ""

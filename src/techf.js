@@ -11,7 +11,7 @@ function shuffle(a) {
 
 var techfun = [
     {
-        "NAME": "Tech8",
+        "NAME": "JPR",
         "QUAL": [
             "2O",
             "2C",
@@ -26,7 +26,7 @@ var techfun = [
         "CURRENT": ""
     },
     {
-        "NAME": "Tech9",
+        "NAME": "JJ",
         "QUAL": [
             "2O",
             "2C",
@@ -41,7 +41,7 @@ var techfun = [
         "CURRENT": ""
     },
     {
-        "NAME": "Tech10",
+        "NAME": "JS",
         "QUAL": [
             "2O",
             "2C",
@@ -56,7 +56,7 @@ var techfun = [
         "CURRENT": ""
     },
     {
-        "NAME": "Tech11",
+        "NAME": "JV",
         "QUAL": [
             "2O",
             "2C",
@@ -71,7 +71,7 @@ var techfun = [
         "CURRENT": ""
     },
     {
-        "NAME": "Tech12",
+        "NAME": "KTP",
         "QUAL": [
             "2O",
             "2C",
@@ -86,7 +86,7 @@ var techfun = [
         "CURRENT": ""
     },
     {
-        "NAME": "Tech13",
+        "NAME": "M3",
         "QUAL": [
             "2O",
             "2C",
@@ -101,7 +101,7 @@ var techfun = [
         "CURRENT": ""
     },
     {
-        "NAME": "Tech14",
+        "NAME": "NM",
         "QUAL": [
             "2O",
             "2C",
@@ -116,37 +116,7 @@ var techfun = [
         "CURRENT": ""
     },
     {
-        "NAME": "Tech15",
-        "QUAL": [
-            "2O",
-            "2C",
-            "4O",
-            "4C",
-            "1P",
-            "1S",
-            "5O",
-            "5C"
-        ],
-        "PREV": "",
-        "CURRENT": ""
-    },
-    {
-        "NAME": "Tech16",
-        "QUAL": [
-            "2O",
-            "2C",
-            "4O",
-            "4C",
-            "1P",
-            "1S",
-            "5O",
-            "5C"
-        ],
-        "PREV": "",
-        "CURRENT": ""
-    },
-    {
-        "NAME": "Tech17",
+        "NAME": "TO",
         "QUAL": [
             "2O",
             "2C",

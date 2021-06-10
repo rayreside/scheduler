@@ -11,19 +11,19 @@ function search(code, techlist){
     }
 }
 
-//DAY 1 FIRST SHIFT
+//DAY 1 FIRST PERIOD
 function firstshift(tasks, techs){
-    for (const element of tasks)  {
-        let result = search(element.CODE, techs);
-        if (result !== undefined){
-            element.ASSIGNED = result.NAME;
+    for (const element of tasks)  { //task loop
+        let result = search(element.CODE, techs); //searching available techs
+        if (result !== undefined){ //if task is not assigned a tech yet
+            element.ASSIGNED = result.NAME; //set assigned tech
         }
-        else { break; }
+        else { break; } //else move to next task
     }
 
-    for (const element of techs) {
-        element.PREV = element.CURRENT;
-        element.CURRENT = "";
+    for (const element of techs) { //tech loop
+        element.PREV = element.CURRENT; //set previous task for next period
+        element.CURRENT = ""; //clear current task
     }
 }
 
