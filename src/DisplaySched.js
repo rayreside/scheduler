@@ -36,8 +36,8 @@ const theme = createMuiTheme({
 const columns = [
   { field: 'id', headerName: 'Order', sortable: false, hide: true },
   { field: 'TASK', headerName: 'task', flex: 5, sortable: false },
-  { field: 'FIRST', headerName: '4-12', flex: 2, sortable: false, editable: true },
-  { field: 'SECOND', headerName: '12-4', flex: 2, sortable: false, editable: true }
+  { field: 'A1', headerName: '4-12', flex: 2, sortable: false, editable: true },
+  { field: 'A2', headerName: '12-4', flex: 2, sortable: false, editable: true },
 ];
 
 //data grid toolbar
@@ -52,12 +52,14 @@ function CustomToolbar() {
 }
 
 const DisplaySched = ({ tasklist }) => {
+
   return(
     <ThemeProvider theme={theme}>
       <Box py={4} style={{ display: 'flex' }}>
         <div style={{ flexGrow: 1 }}></div>
-        <div style={{ flexGrow: 3 }}>
-          <DataGrid disableColumnMenu={true}
+        <div style={{ flexGrow: 5 }}>
+          <DataGrid 
+          disableColumnMenu={true}
           disableSelectionOnClick={true}
           autoHeight
           rows={tasklist}

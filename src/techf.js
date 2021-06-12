@@ -1,15 +1,4 @@
-import { techp } from './techp';
-
-//randomizer function
-function shuffle(a) {
-    for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-}
-
-var techfun = [
+export const initTechf = [
     {
         "NAME": "JPR",
         "QUAL": [
@@ -137,7 +126,3 @@ var techfun = [
         "CURRENT": ""
     }
 ];
-
-const techf = shuffle(techfun);
-
-export const techlist = techp.concat(techf);

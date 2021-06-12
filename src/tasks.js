@@ -1,4 +1,4 @@
-export const tasklist = [
+export const initTasks = [
     {
         "id": "02",
         "TASK": "Assessment Lead",
@@ -119,13 +119,6 @@ export const tasklist = [
         "SECOND": ""
     },
     {
-        "id": "10",
-        "TASK": "Snapping Circulator",
-        "CODE": "1S",
-        "FIRST": "",
-        "SECOND": ""
-    },
-    {
         "id": "14",
         "TASK": "Plucking Operator A",
         "CODE": "1P",
@@ -140,16 +133,16 @@ export const tasklist = [
         "SECOND": ""
     },
     {
-        "id": "05",
-        "TASK": "Scalpel Operator B",
-        "CODE": "2O",
+        "id": "10",
+        "TASK": "Snapping Circulator",
+        "CODE": "1S",
         "FIRST": "",
         "SECOND": ""
     },
     {
-        "id": "24",
-        "TASK": "Cutting Operator D",
-        "CODE": "5O",
+        "id": "05",
+        "TASK": "Scalpel Operator B",
+        "CODE": "2O",
         "FIRST": "",
         "SECOND": ""
     },
@@ -164,6 +157,13 @@ export const tasklist = [
         "id": "17",
         "TASK": "Plucking Operator D",
         "CODE": "1P",
+        "FIRST": "",
+        "SECOND": ""
+    },
+    {
+        "id": "24",
+        "TASK": "Cutting Operator D",
+        "CODE": "5O",
         "FIRST": "",
         "SECOND": ""
     }

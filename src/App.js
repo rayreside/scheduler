@@ -1,20 +1,32 @@
 import React, { useState } from 'react';
 import './App.css';
-import bg from "./img/summer.JPG";
-import CreateSched from './CreateSched';
 
-import { tasklist } from './tasks';
-import { techlist } from './techf';
+import shuffle from 'shuffle-array';
+
+import { initTasks } from './tasks';
+import { initTasklist } from './tasklist';
+import { initTechf } from './techf';
+import { initTechp } from './techp';
 
 function App() {
 
   //STATE
-  const [tasks, setTasks] = useState(tasklist);
-  const [techs , setTechs] = useState(techlist);
+  const [ tasks, setTasks ] = useState(initTasks);
+  const [ tasklist, setTasklist ] = useState(initTasklist);
+  const [ techf, setTechf ] = useState(initTechf);
+  const [ techp, setTechp ] = useState(initTechp);
+  const [ techlist, setTechlist ] = useState([]);
+
+  function shuffleTechlist(tf, tp) {
+    shuffle(tf);
+    shuffle(tp);
+    const newList = tp.concat(tf);
+    setTechlist(newList);
+  }
 
   return (
     <div className="App">
-      <CreateSched tasks={tasks} techs={techs} setTasks={setTasks} setTechs={setTechs}/>
+      <button onClick={shuffleTechlist(techf, techp)}>Try me</button>
     </div>
   );
 }
