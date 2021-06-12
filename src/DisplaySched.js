@@ -35,9 +35,15 @@ const theme = createMuiTheme({
 // define which columns you have in your data
 const columns = [
   { field: 'id', headerName: 'Order', sortable: false, hide: true },
-  { field: 'TASK', headerName: 'task', flex: 5, sortable: false },
-  { field: 'FIRST', headerName: '4-12', flex: 2, sortable: false, editable: true },
-  { field: 'SECOND', headerName: '12-4', flex: 2, sortable: false, editable: true }
+  { field: 'TASK', headerName: 'task', flex: 4, sortable: false },
+  { field: '1', headerName: '1-a', flex: 1, sortable: false, editable: true },
+  { field: '2', headerName: '1-b', flex: 1, sortable: false, editable: true },
+  { field: '3', headerName: '2-a', flex: 1, sortable: false, editable: true },
+  { field: '4', headerName: '2-b', flex: 1, sortable: false, editable: true },
+  { field: '5', headerName: '3-a', flex: 1, sortable: false, editable: true },
+  { field: '6', headerName: '3-b', flex: 1, sortable: false, editable: true },
+  { field: '7', headerName: '4-a', flex: 1, sortable: false, editable: true },
+  { field: '8', headerName: '4-b', flex: 1, sortable: false, editable: true }
 ];
 
 //data grid toolbar
@@ -56,7 +62,7 @@ const DisplaySched = ({ tasklist }) => {
     <ThemeProvider theme={theme}>
       <Box py={4} style={{ display: 'flex' }}>
         <div style={{ flexGrow: 1 }}></div>
-        <div style={{ flexGrow: 3 }}>
+        <div style={{ flexGrow: 5 }}>
           <DataGrid disableColumnMenu={true}
           disableSelectionOnClick={true}
           autoHeight

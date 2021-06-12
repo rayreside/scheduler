@@ -1,15 +1,4 @@
-import { techp } from './techp';
-
-//randomizer function
-function shuffle(a) {
-    for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-}
-
-var techfun = [
+export const techf = [
     {
         "NAME": "JPR",
         "QUAL": [
@@ -21,9 +10,7 @@ var techfun = [
             "1S",
             "5O",
             "5C"
-        ],
-        "PREV": "",
-        "CURRENT": ""
+        ]
     },
     {
         "NAME": "JJ",
@@ -36,9 +23,7 @@ var techfun = [
             "1S",
             "5O",
             "5C"
-        ],
-        "PREV": "",
-        "CURRENT": ""
+        ]
     },
     {
         "NAME": "JS",
@@ -51,9 +36,7 @@ var techfun = [
             "1S",
             "5O",
             "5C"
-        ],
-        "PREV": "",
-        "CURRENT": ""
+        ]
     },
     {
         "NAME": "JV",
@@ -67,9 +50,7 @@ var techfun = [
             "5O",
             "5C",
             "2L"
-        ],
-        "PREV": "",
-        "CURRENT": ""
+        ]
     },
     {
         "NAME": "KTP",
@@ -85,9 +66,7 @@ var techfun = [
             "1L",
             "2L",
             "5L"
-        ],
-        "PREV": "",
-        "CURRENT": ""
+        ]
     },
     {
         "NAME": "M3",
@@ -100,9 +79,7 @@ var techfun = [
             "1S",
             "5O",
             "5C"
-        ],
-        "PREV": "",
-        "CURRENT": ""
+        ]
     },
     {
         "NAME": "NM",
@@ -115,9 +92,7 @@ var techfun = [
             "1S",
             "5O",
             "5C"
-        ],
-        "PREV": "",
-        "CURRENT": ""
+        ]
     },
     {
         "NAME": "TO",
@@ -132,12 +107,6 @@ var techfun = [
             "5C",
             "1L",
             "5L"
-        ],
-        "PREV": "",
-        "CURRENT": ""
+        ]
     }
 ];
-
-const techf = shuffle(techfun);
-
-export const techlist = techp.concat(techf);

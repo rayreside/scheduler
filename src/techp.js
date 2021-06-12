@@ -1,13 +1,4 @@
-//randomizer function
-function shuffle(a) {
-    for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-}
-
-var techpun = [
+export const techp = [
     {
         "NAME": "AML",
         "QUAL": [
@@ -17,9 +8,7 @@ var techpun = [
             "4C",
             "1P",
             "AD"
-        ],
-        "PREV": "",
-        "CURRENT": ""
+        ]
     },
     {
         "NAME": "CRB",
@@ -27,9 +16,7 @@ var techpun = [
             "5O",
             "1P",
             "1S"
-        ],
-        "PREV": "",
-        "CURRENT": ""
+        ]
     },
     {
         "NAME": "GS",
@@ -38,9 +25,7 @@ var techpun = [
             "5C",
             "1P",
             "1S"
-        ],
-        "PREV": "",
-        "CURRENT": ""
+        ]
     },
     {
         "NAME": "JSM",
@@ -49,9 +34,7 @@ var techpun = [
             "2C",
             "4O",
             "4C"
-        ],
-        "PREV": "",
-        "CURRENT": ""
+        ]
     },
     {
         "NAME": "JBL",
@@ -63,9 +46,7 @@ var techpun = [
             "1P",
             //"1S",
             "5O"
-        ],
-        "PREV": "",
-        "CURRENT": ""
+        ]
     },
     {
         "NAME": "JMA",
@@ -75,9 +56,7 @@ var techpun = [
             "4O",
             "4C",
             "5O"
-        ],
-        "PREV": "",
-        "CURRENT": ""
+        ]
     },
     {
         "NAME": "MPP",
@@ -86,9 +65,7 @@ var techpun = [
             "5C",
             "1P",
             "1S"
-        ],
-        "PREV": "",
-        "CURRENT": ""
+        ]
     },
     {
         "NAME": "RPR",
@@ -98,19 +75,13 @@ var techpun = [
             "4O",
             "4C",
             "5O"
-        ],
-        "PREV": "",
-        "CURRENT": ""
+        ]
     },
     {
         "NAME": "SSM",
         "QUAL": [
             "1P",
             "1S",
-        ],
-        "PREV": "",
-        "CURRENT": ""
+        ]
     }
 ];
-
-export const techp = shuffle(techpun);

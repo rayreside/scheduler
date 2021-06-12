@@ -3,28 +3,43 @@ import arrayMove from 'array-move';
 
 import DisplaySched from './DisplaySched.js';
 
-//code search
-function firstSearch(code, techlist){
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+function applyCode(code, techname, techlist, key){
     for (const tech of techlist)  {
-        if (tech.QUAL.find(element => element === code) && tech.CURRENT === "") {
-            tech.CURRENT = code;
+        if (tech.NAME === techname) {
+            const a = key;
+            tech[a] = code;
+        }
+    }
+}
+
+//code search
+function evenSearch(code, techlist, key){
+    for (const tech of techlist)  {
+        if (tech.QUAL.find(element => element === code) && tech[key] === undefined) {
             return tech;
         }
     }
 }
 
 //code search
-function secondSearch(code, techlist){
+function oddSearch(code, techlist, key){
     for (const tech of techlist)  {
-        if (tech.QUAL.find(element => element === code) && tech.CURRENT === "" && tech.PREV !== code ) {
-            if (tech.PREV === "4O" && code === "5O") {
+        if (tech.QUAL.find(element => element === code) && tech[key] === undefined && tech[key-1] !== code ) {
+            if (tech[key-1] === "4O" && code === "5O") {
                 //skip
             }
-            else if (tech.PREV === "5O" && code === "4O") {
+            else if (tech[key-1]=== "5O" && code === "4O") {
                 //skip
             }
             else {
-                tech.CURRENT = code;
                 return tech;
             }
         }
@@ -32,91 +47,80 @@ function secondSearch(code, techlist){
 }
 
 //code search
-function pluckSearch(code, techlist){
+function pluckSearch(techlist, key){
     for (const tech of techlist)  {
-        if (tech.CURRENT === "" && tech.PREV !== code ) {
-            tech.CURRENT = code;
+        if (tech[key] === undefined && tech[key-1] !== "1P" ) {
             return tech;
         }
     }
 }
 
 //FIRST PERIOD
-function firstPeriod(tasks, techs){
+function firstPeriod(tasks, techs, key){
     for (const element of tasks)  { //task loop
         switch (element.CODE) {
             case "AD": //set admin
-                element.FIRST = "NC";
+                element[key] = "NC";
                 break;
             case "2L": //set assessment lead
-                element.FIRST = "TT";
+                element[key] = "TT";
                 break;
             case "1L": //set psp lead
-                element.FIRST = "SB";
+                element[key] = "SB";
                 break;
             case "5L": //set cutting lead
-                element.FIRST = "MLS";
+                element[key] = "MLS";
                 break;
             default: //set everything else
-                let result = firstSearch(element.CODE, techs); //searching available techs
+                let result = evenSearch(element.CODE, techs, key); //searching available techs
                 if (result !== undefined){ //if task is not assigned a tech yet
-                    element.FIRST = result.NAME; //set assigned tech
+                    element[key] = result.NAME; //set assigned tech
+                    applyCode(element.CODE, result.NAME, techs, key);
                 }
                 else { break; } //else move to next task
         }
     }
-
-    for (const element of techs) { //tech loop
-        element.PREV = element.CURRENT; //set previous task for next period
-        element.CURRENT = ""; //clear current task
-    }
-
-    console.log(tasks);
 }
 
 //SECOND PERIOD
-function secondPeriod(tasks, techs){
-
-    console.log(tasks);
+function secondPeriod(tasks, techs, key){
 
     for (const element of tasks)  { //task loop
         switch (element.CODE) {
             case "AD": //set admin
-                element.SECOND = element.FIRST;
+                element[key] = element[key-1];
                 break;
             case "2L": //set assessment lead
-                element.SECOND = element.FIRST;
+                element[key] = element[key-1];
                 break;
             case "1L": //set psp lead
-                element.SECOND = element.FIRST;
+                element[key] = element[key-1];
                 break;
             case "5L": //set cutting lead
-                element.SECOND = element.FIRST;
+                element[key] = element[key-1];
                 break;
             case "1P":
-                let result1 = pluckSearch(element.CODE, techs);
+                let result1 = pluckSearch(techs, key);
                 if (result1 !== undefined){ //if task is not assigned a tech yet
-                    element.SECOND = result1.NAME; //set assigned tech
+                    element[key] = result1.NAME; //set assigned tech
+                    applyCode(element.CODE, result1.NAME, techs, key);
                 }
                 else { break; } //else move to next task
                 break;
             default: //set everything else
-                let result2 = secondSearch(element.CODE, techs); //searching available techs
+                let result2 = oddSearch(element.CODE, techs, key); //searching available techs
                 if (result2 !== undefined){ //if task is not assigned a tech yet
-                    element.SECOND = result2.NAME; //set assigned tech
+                    element[key] = result2.NAME; //set assigned tech
+                    applyCode(element.CODE, result2.NAME, techs, key);
                 }
                 else { break; } //else move to next task
         }
     }
-    
-    for (const element of techs) { //tech loop
-        element.PREV = element.CURRENT; //set previous task for next period
-        element.CURRENT = ""; //clear current task
-    }
 }
 
-function create(tasks, techs){
-    firstPeriod(tasks, techs);
+function create(tasks, techs, key){
+
+    firstPeriod(tasks, techs, key);
 
     let tasks1 = arrayMove(tasks,7,-1);
     let tasks2 = arrayMove(tasks1,8,-1);
@@ -126,16 +130,27 @@ function create(tasks, techs){
     tasks2 = arrayMove(tasks1,19,-1);
     //tasks1 = arrayMove(tasks2,-2,0);
     
-    secondPeriod(tasks2, techs);
+    secondPeriod(tasks2, techs, key+1);
 }
 
-const CreateSched = ({ tasks , techs, theme }) => {
+const CreateSched = ({ tasks , techf, techp }) => {
 
-    create(tasks, techs);
+    const tech1 = shuffle(techf);
+    
+    const tech2 = shuffle(techp);
+    let techs = tech2.concat(tech1);
+
+    for (var i = 1; i < 8; i+=2) {
+        create(tasks, techs, i);
+        const techa = shuffle(techs.slice(-8));
+        const techb = shuffle(techs.slice(0,9));
+        techs = techb.concat(techa);
+        console.log(techs);
+    }
 
     return(
         <div style={{ flexGrow: 1 }}>
-            <DisplaySched tasklist={tasks} theme={theme} />
+            <DisplaySched tasklist={tasks} />
         </div>
     )
 }
